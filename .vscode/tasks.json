@@ -17,9 +17,71 @@
                 "iphonesimulator",
                 "-configuration",
                 "Debug",
+                "-derivedDataPath",
+                ".build/",
                 "build"
             ],
             "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "Run App on Simulator",
+            "command": "xcrun",
+            "args": [
+                "simctl",
+                "install",
+                "booted",
+                ".build/Build/Products/Debug-iphonesimulator/TechBlogSpring2025.app"
+            ],
+            "group": "test",
+            "dependsOn": "Xcode Build - Debug"
+        },
+        {
+            "type": "shell",
+            "label": "Launch App on Simulator",
+            "command": "xcrun",
+            "args": [
+                "simctl",
+                "launch",
+                "booted",
+                "yu1Ro5.TechBlogSpring2025" // アプリのバンドルIDを指定
+            ],
+            "group": "test",
+            "dependsOn": "Run App on Simulator"
+        },
+        {
+            "type": "shell",
+            "label": "Boot Simulator",
+            "command": "xcrun",
+            "args": [
+                "simctl",
+                "boot",
+                "iPhone 16 Pro" // 起動するデバイス名を指定
+            ],
+            "group": "test"
+        },
+        {
+            "type": "shell",
+            "label": "Shutdown Simulator",
+            "command": "xcrun",
+            "args": [
+                "simctl",
+                "shutdown",
+                "booted"
+            ],
+            "group": "test"
+        },
+        {
+            "type": "shell",
+            "label": "Build and Run Sequence",
+            "dependsOn": [
+                "Xcode Build - Debug",
+                "Boot Simulator",
+                "Run App on Simulator",
+                "Launch App on Simulator"
+            ],
+            "dependsOrder": "sequence",
+            "group": "test"
         }
     ]
 }

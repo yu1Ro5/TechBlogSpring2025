@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:TechBlogSpring2025}",
+            "name": "Debug NewTarget",
+            "program": "${workspaceFolder:TechBlogSpring2025}/.build/debug/NewTarget",
+            "preLaunchTask": "swift: Build Debug NewTarget"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:TechBlogSpring2025}",
+            "name": "Release NewTarget",
+            "program": "${workspaceFolder:TechBlogSpring2025}/.build/release/NewTarget",
+            "preLaunchTask": "swift: Build Release NewTarget"
+        }
+    ]
+}
